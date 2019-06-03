@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.SalelistMapper">
+
+    <insert id="addSaleList" parameterType="com.kang.sys.entity.Salelist" useGeneratedKeys="true" keyProperty="salelistId">
+      INSERT INTO salelist (salelist_number,salelist_allprice,salelist_stockorback,salelist_receivablesaccount_id,salelist_receivablesmethod,salelist_paid,salelist_unpaid,insert_user,insert_time,uid)
+      VALUES (#{salelistNumber},#{salelistAllprice} ,#{salelistStockorback} ,#{salelistReceivablesaccountId} ,#{salelistReceivablesmethod} ,#{salelistPaid} ,#{salelistUnpaid} ,#{insertUser} ,now() ,#{uid} )
+    </insert>
+
+</mapper>

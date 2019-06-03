@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.ShopsMapper">
+
+    <insert id="addShop" parameterType="com.kang.sys.entity.Shops">
+   INSERT INTO  shops (shops_name,shops_address,shops_status,insert_time,uid) VALUES (#{shopsName}, #{shopsAddress},#{shopsStatus} ,now(), #{uid})
+    </insert>
+
+    <update id="updateShop" parameterType="com.kang.sys.entity.Shops">
+        UPDATE shops
+        <trim prefix="set" suffixOverrides=",">
+            <if test="shopsName!=null">shops_name=#{shopsName},</if>
+            <if test="shopsAddress!=null">shops_address=#{shopsAddress},</if>
+            <if test="shopsStatus!=null">shops_status=#{shopsStatus},</if>
+        </trim>
+        ,update_time= now()
+        WHERE  shops_id=#{shopsId}
+    </update>
+
+</mapper>

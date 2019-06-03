@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.ReceivablesMapper">
+
+    <insert id="addReceivables" parameterType="com.kang.sys.entity.Receivables">
+        INSERT INTO receivables (receivables_price,receivables_time,customer_id,receivables_method,receivablesaccount_id,insert_user,insert_time,receivables_status,uid)
+            VALUES (#{receivablesPrice}, #{receivablesTime}, #{customerId}, #{receivablesMethod},#{receivablesaccountId}, #{insertUser}, now(), #{receivablesStatus}, #{uid})
+    </insert>
+
+</mapper>

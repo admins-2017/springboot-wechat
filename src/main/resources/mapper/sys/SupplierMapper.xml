@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.SupplierMapper">
+
+    <insert id="addSupplier" parameterType="com.kang.sys.entity.Supplier">
+      INSERT INTO supplier(supplier_name, supplier_account, supplier_phone, supplier_address, supplier_arrears, uid, supplier_describe,insert_time,insert_user,management_id)
+          VALUES (#{supplierName},#{supplierAccount}, #{supplierPhone},#{supplierAddress},#{supplierArrears},#{uid}, #{supplierDescribe},now(),#{insertUser},#{managementId})
+    </insert>
+
+    <update id="updateSupplier" parameterType="com.kang.sys.entity.Supplier">
+        UPDATE supplier
+        <trim prefix="set" suffixOverrides=",">
+            <if test="supplierName!=null">supplier_name=#{supplierName},</if>
+            <if test="supplierAccount!=null">supplier_account=#{supplierAccount},</if>
+            <if test="supplierPhone!=null">supplier_phone=#{supplierPhone},</if>
+            <if test="supplierAddress!=null">supplier_address=#{supplierAddress},</if>
+            <if test="supplierArrears!=null">supplier_arrears=#{supplierArrears},</if>
+            <if test="supplierStatus!=null">supplier_status=#{supplierStatus},</if>
+            <if test="managementId!=null">management_id=#{managementId},</if>
+            <if test="updateUser!=null">update_user=#{updateUser},</if>
+            <if test="supplierDescribe!=null">supplier_describe=#{supplierDescribe},</if>
+        </trim>
+        ,update_time= now()
+        WHERE supplier_id=#{supplierId}
+    </update>
+</mapper>

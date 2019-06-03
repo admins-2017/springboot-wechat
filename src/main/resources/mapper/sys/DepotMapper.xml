@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.DepotMapper">
+
+
+    <insert id="addDepot" parameterType="com.kang.sys.entity.Depot">
+      INSERT INTO depot (depot_name,depot_address,shops_id,depot_status, insert_time, insert_user)
+            VALUES (#{depotName},#{depotAddress},#{shopsId}, 0,now(),#{insertUser})
+    </insert>
+
+    <update id="updateDepot" parameterType="com.kang.sys.entity.Depot">
+        UPDATE depot
+        <trim prefix="set" suffixOverrides=",">
+            <if test="depotName!=null">depot_name=#{depotName},</if>
+            <if test="depotAddress!=null">depot_address=#{depotAddress},</if>
+            <if test="depotStatus!=null">depot_status=#{depotStatus},</if>
+            <if test="updateUser!=null">update_user=#{updateUser},</if>
+        </trim>
+        ,update_time= now()
+        WHERE depot_id=#{depotId}
+    </update>
+</mapper>

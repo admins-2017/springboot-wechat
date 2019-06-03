@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.BuylistdetailsMapper">
+
+    <insert id="addBuylistdetails" parameterType="com.kang.sys.entity.Buylistdetails">
+     INSERT INTO buylistdetails (buylist_id, depot_id, goods_id,supplier_id,supplier_price,buylist_number, buylist_price,buylist_settle,buylist_paid,buylist_unpaid)
+      VALUES (#{buylistId},#{depotId},#{goodsId},#{supplierId}, #{supplierPrice},#{number},#{buylistPrice},#{buylistSettle},#{buylistPaid},#{buylistUnpaid})
+    </insert>
+</mapper>

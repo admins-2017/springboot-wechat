@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.StockMapper">
+
+    <insert id="addStock" parameterType="com.kang.sys.entity.Stock">
+        INSERT INTO stock (depot_id, goods_id,stock_number, lastadd_user, lastaddto_time, uid)
+        VALUES (#{depotId},#{goodsId},#{stockNumber},#{lastaddUser}, now(), #{uid} )
+    </insert>
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.UserInfoMapper">
+    <!-- 查询用户信息 -->
+    <select id="findByUserName" resultType="com.kang.sys.entity.User">
+        SELECT * FROM user_info WHERE username = #{userName}
+    </select>
+
+    <!-- 删除用户 -->
+    <delete id="del">
+        DELETE FROM user_info WHERE username = #{username}
+    </delete>
+
+</mapper>

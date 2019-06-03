@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.SalesclerkMapper">
+
+    <insert id="addSalesclerk" parameterType="com.kang.sys.entity.Salesclerk">
+     INSERT INTO salesclerk (salesclerk_name,salesclerk_password,salesclerk_login,salesclerk_status,insert_time,uid,shops_id) VALUES (#{salesclerkName}, #{salesclerkName}, #{salesclerkLogin}, #{salesclerkStatus}, now(), #{uid}, #{shopsId})
+    </insert>
+
+
+    <update id="updateSalesclerk" parameterType="com.kang.sys.entity.Salesclerk">
+        UPDATE salesclerk
+        <trim prefix="set" suffixOverrides=",">
+            <if test="salesclerkName!=null">salesclerk_name=#{salesclerkName},</if>
+            <if test="salesclerkPassword!=null">salesclerk_password=#{salesclerkPassword},</if>
+            <if test="salesclerkLogin!=null">salesclerk_login=#{salesclerkLogin},</if>
+            <if test="salesclerkStatus!=null">salesclerk_status=#{salesclerkStatus},</if>
+        </trim>
+        ,update_time= now()
+        WHERE salesclerk_id=#{salesclerkId}
+    </update>
+
+</mapper>

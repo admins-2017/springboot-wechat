@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.sys.mapper.CustomerMapper">
+
+    <insert id="addCustomer" parameterType="com.kang.sys.entity.Customer">
+      INSERT INTO customer (customer_name,customer_phone,customer_address,customer_detailed_address,customer_sex,customer_account, customer_arrears, insert_user,insert_time,uid,management,customer_deatis)
+            VALUES (#{customerName},#{customerPhone},#{customerAddress},#{customerDetailedAddress},#{customerSex},#{customerAccount}, #{customerArrears},#{insertUser} ,now() ,#{uid} ,#{management} ,#{customerDeatis})
+    </insert>
+
+    <update id="updateCustomer" parameterType="com.kang.sys.entity.Customer">
+        UPDATE customer
+        <trim prefix="set" suffixOverrides=",">
+            <if test="customerName!=null">customer_name=#{customerName},</if>
+            <if test="customerPhone!=null">customer_phone=#{customerPhone},</if>
+            <if test="customerAddress!=null">customer_address=#{customerAddress},</if>
+            <if test="customerDetailedAddress!=null">customer_detailed_address=#{customerDetailedAddress},</if>
+            <if test="customerAccount!=null">customer_account=#{customerAccount},</if>
+            <if test="customerArrears!=null">customer_arrears=#{customerArrears},</if>
+            <if test="customerStatus!=null">customer_status=#{customerStatus},</if>
+            <if test="customerSex!=null">customer_sex=#{customerSex},</if>
+            <if test="management!=null">management=#{management},</if>
+            <if test="updateUser!=null">update_user=#{updateUser},</if>
+            <if test="customerDeatis!=null">customer_deatis=#{customerDeatis},</if>
+        </trim>
+        ,update_time= now()
+        WHERE customer_id=#{customerId}
+    </update>
+</mapper>
