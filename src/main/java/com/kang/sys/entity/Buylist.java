@@ -28,7 +28,6 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 public class Buylist implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @TableId(value = "buylist_id", type = IdType.AUTO)
     private Integer buylistId;
